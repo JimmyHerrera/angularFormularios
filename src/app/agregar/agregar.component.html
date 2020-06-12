@@ -41,10 +41,15 @@
   </form>
 </div>
 
-<div *ngFor="let usuario of usuarios; let posicion = index" class="container container-lista">
-  <h4> Nombre de usuario:  {{usuario.nombre}} Tiene la posición {{posicion}} </h4>
-  <p> Correo de usuario:  {{usuario.correo}}</p>
-  <p> Contraseña del usuario: {{usuario.password}} </p>
+<div class="container">
+  <div *ngFor="let usuario of usuarios; let posicion = index" class="container-lista">
+    <h4> Nombre de usuario:  {{usuario.nombre}} Tiene la posición {{posicion}} </h4>
+    <p> Correo de usuario:  {{usuario.correo}}</p>
+    <p> Contraseña del usuario: {{usuario.password}} </p>
 
-  <button (click)="editarUsuario(posicion)">Editar</button>
+    <button class="btn btn-light" (click)="editarUsuario(posicion)">Editar</button>
+    <button class="btn btn-danger" (click)="eliminarUsuario(posicion)">Eliminar</button>
+  </div>
 </div>
+
+
