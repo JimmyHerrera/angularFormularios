@@ -35,12 +35,16 @@
         </div>
       </div>
     </div>
-    <button [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="agregar()">Agregar</button>
+    <button *ngIf="esNuevo"  [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="agregar()">Agregar</button>
+
+    <button  *ngIf="!esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-danger" (click)="editar()">Editar</button>
   </form>
 </div>
 
-<div *ngFor="let usuario of usuarios" class="container container-lista">
-  <h4> Nombre de usuario:  {{usuario.nombre}} </h4>
+<div *ngFor="let usuario of usuarios; let posicion = index" class="container container-lista">
+  <h4> Nombre de usuario:  {{usuario.nombre}} Tiene la posición {{posicion}} </h4>
   <p> Correo de usuario:  {{usuario.correo}}</p>
   <p> Contraseña del usuario: {{usuario.password}} </p>
+
+  <button (click)="editarUsuario(posicion)">Editar</button>
 </div>
